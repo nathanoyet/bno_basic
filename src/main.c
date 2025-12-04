@@ -1,14 +1,16 @@
 /**
  * @file    main.c
- * @brief   Basic USART communication application for the STM32F411
- * @details Demonstrates basic USART transmission to send messages to a terminal application via a 
- *          Serial-to-USB converter.
+ * @brief   Basic BNO055 sensor reading application via USART for the STM32F411
+ * @details Reads sensor values from the BNO055 IMU and sends them to a terminal emulator using
+ *          USART via a Serial-to-USB converter.
  * 
  *          The circuit layout is:
  *          - Pin A9 (USART1 TX) connects to FT232 RXD
  *          - Pin A10 (USART1 RX) connects to FT232 TXD
  *          - Pin A2 (USART2 TX) connects to BNO055 SCL
- *          - Pin A3 (USART2 RX) connects to BNO055 SDA     
+ *          - Pin A3 (USART2 RX) connects to BNO055 SDA
+ *          - PS0 is connected to GND
+ *          - PS1 is connected to 3.3/5V
  * 
  * @note    The local .bin path is:
  *          ~/projects/bno_basic/.pio/build/blackpill_f411ce/firmware.bin
@@ -73,17 +75,6 @@ int main(void) {
     };
     CHECK_STATUS(GPIO_Init(&bno_rx_config));
 
-    //configure debug pin
-    GPIO_Config_t gpio_debug_config = {
-        .port         = GPIOC,
-        .pin          = GPIO_PIN_13,
-        .mode         = GPIO_MODE_OUTPUT,
-        .output_speed = GPIO_OSPEED_HIGH,
-        .output_type  = GPIO_OTYPE_PUSH_PULL
-    };
-    CHECK_STATUS(GPIO_Init(&gpio_debug_config));
-    CHECK_STATUS(GPIO_Set_Pin(GPIOC, GPIO_PIN_13));
-
     //configure USART1 to communicate with the terminal
     USART_Config_t usart_term_config = {
         .instance         = USART1,
@@ -117,19 +108,11 @@ int main(void) {
     }
 
     //wait for system to calibrate
-    // uint8_t sys_calib_status = 0;
-    // CHECK_STATUS(BNO_Get_Sys_Calib_Status(&usart_bno_config, &sys_calib_status));
-    // while (sys_calib_status == 0) {
-    //     NOP();
-    // }
-
-    uint8_t gyr_calib_status = 0;
-    CHECK_STATUS(BNO_Get_GYR_Calib_Status(&usart_bno_config, &gyr_calib_status));
-    while (gyr_calib_status == 0) {
+    uint8_t sys_calib_status = 0;
+    CHECK_STATUS(BNO_Get_Sys_Calib_Status(&usart_bno_config, &sys_calib_status));
+    while (sys_calib_status == 0) {
         NOP();
     }
-
-    GPIO_Reset_Pin(GPIOC, GPIO_PIN_13);
 
     //read calibration profile
     BNO_Calib_Profile_t calib_profile = {0};

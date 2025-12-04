@@ -1,6 +1,6 @@
 /**
  * @file    usart.h
- * @brief   STM32F411 USART Driver
+ * @brief   STM32F411 USART Driver Header File
  * @details This header file contains the public interface for the STM32F411 USART driver. It 
  *          includes constants, enumerations, configuration structures and function prototypes for 
  *          USART communication. 

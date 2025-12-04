@@ -1,8 +1,16 @@
+/**
+ * @file    bno.c
+ * @brief   BNO055 Driver
+ * @details This driver provides an interface for BNO055 IMU sensor, including sensor calibration, 
+ *          configuration, and reading. USART is used to communicate between the MCU (STM32F411)
+ *          and the sensor.
+ */
+
+
 #include "bno.h"
 
 
-
-/**************************************************************************************************/
+ /**************************************************************************************************/
 /*                              Static Function Forward Declarations                              */
 /**************************************************************************************************/
 
@@ -1594,7 +1602,7 @@ Status BNO_Run_BIST(USART_Config_t *usart, uint8_t *result) {
 /**************************************************************************************************/
 /*                                  Sensor Calibration Functions                                  */
 /**************************************************************************************************/
-//note: sensors should be fully calibrated before offset bytes are read
+
 /**
  * @brief  Gets the offset of a particular sensor
  * @param  usart:  Pointer to a struct containing USART settings

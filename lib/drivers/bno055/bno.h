@@ -1,3 +1,11 @@
+/**
+ * @file    bno.h
+ * @brief   BNO055 Driver Header File
+ * @details This header file contains the public interface for the BNO055 driver. It includes 
+ *          enumerations, structures, address mappings, register access macros, and function 
+ *          prototypes. 
+ */
+
 #ifndef __BNO_H
 #define __BNO_H
 
@@ -1343,9 +1351,6 @@ Status BNO_Set_GYR_AM_Filter    (USART_Config_t *usart, BNO_GYR_Filter filter);
 Status BNO_Get_GYR_AM_Filter    (USART_Config_t *usart, uint8_t *filter);
 Status BNO_Set_GYR_AM_Axis_State(USART_Config_t *usart, BNO_Axis axis, BNO_IRQ_Axis_State state);
 Status BNO_Get_GYR_AM_Axis_State(USART_Config_t *usart, BNO_Axis axis, uint8_t *state);
-
-
-
 
 
 
