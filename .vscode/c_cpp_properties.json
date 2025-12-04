@@ -1,0 +1,50 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/oyetn/projects/usart_basic/include",
+                "/home/oyetn/projects/usart_basic/src",
+                "/home/oyetn/projects/usart_basic/lib/drivers",
+                "/home/oyetn/projects/usart_basic/lib/utils",
+                "/home/oyetn/.platformio/packages/framework-cmsis@2.50501.200527/CMSIS/Include",
+                "/home/oyetn/.platformio/packages/framework-cmsis-stm32f4/Include",
+                "/home/oyetn/projects/usart_basic/.pio/libdeps/blackpill_f411ce/Unity/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/oyetn/projects/usart_basic/include",
+                    "/home/oyetn/projects/usart_basic/src",
+                    "/home/oyetn/projects/usart_basic/lib/drivers",
+                    "/home/oyetn/projects/usart_basic/lib/utils",
+                    "/home/oyetn/.platformio/packages/framework-cmsis@2.50501.200527/CMSIS/Include",
+                    "/home/oyetn/.platformio/packages/framework-cmsis-stm32f4/Include",
+                    "/home/oyetn/projects/usart_basic/.pio/libdeps/blackpill_f411ce/Unity/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60118",
+                "STM32F4",
+                "STM32F4xx",
+                "STM32F411xE",
+                "F_CPU=100000000L",
+                ""
+            ],
+            "compilerPath": "/home/oyetn/.platformio/packages/toolchain-gccarmnoneeabi@1.70201.0/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mthumb",
+                "-mcpu=cortex-m4",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
